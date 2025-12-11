@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    // 1. Set the base directory for path resolution
+    "baseUrl": "./src", 
+    
+    // 2. Map the alias names (must match the names in vite.config.js)
+    "paths": {
+      // The '*' means "match everything inside this folder"
+      "components/*": ["components/*"], 
+      "pages/*": ["pages/*"],
+      "features/*": ["features/*"],
+      // Map the root alias '@' to any file under 'src'
+      "@/*": ["*"] 
+    }
+  },
+  "include": ["src/**/*"] // Ensure all source files are included
+}

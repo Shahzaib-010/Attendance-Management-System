@@ -1,0 +1,58 @@
+
+
+/* -----------------------------Font----------------------------- */
+
+@font-face {
+  font-family: wix2;
+  src: url(/fonts/wix2.ttf);
+}
+
+@font-face {
+  font-family: wix;
+  src: url(/fonts/wix.ttf);
+}
+@font-face {
+  font-family: switzer;
+  src: url('/fonts/switzer.ttf');
+}
+
+@font-face {
+  font-family: switzer2;
+  src: url('/fonts/switzer2.ttf');
+}
+
+
+
+/* -----------------------------Font----------------------------- */
+
+
+
+@import "tailwindcss";
+
+
+@theme{
+    --font-wix2 : wix2, "san-serif";
+    --font-wix : wix, "san-serif";
+    --font-switzer : switzer, "san-serif";
+   
+
+
+    
+    
+  }
+
+
+
+
+  
+  
+  /* -----------------------------Colors----------------------------- */
+
+
+
+
+
+
+
+  
+  /* -----------------------------Colors----------------------------- */
