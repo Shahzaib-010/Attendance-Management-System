@@ -49,10 +49,29 @@
   /* -----------------------------Colors----------------------------- */
 
 
+@layer base {
+  :root {
+    --color-orange: #ff6d10;       /* orange */
+    --color-text: #000000 ;        /* black */
+    --color-bg: #ffffff;           /* white */
+    
+  }
+
+  .dark {
+    --color-orange: #ff6d10;    /* orange  */
+    --color-text: #ffffff;      /* white */
+    --color-bg: #000000;        /* black */
+    
+  }
+
+  /* Optional: smooth color transition */
+  * {
+    @apply transition-colors duration-300;
+  }
+}
 
 
 
 
 
-  
   /* -----------------------------Colors----------------------------- */
