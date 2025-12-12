@@ -6,11 +6,15 @@ import { Outlet } from 'react-router'
 function DashboardLayout() {
   return (
     <div className="">
-        <Sidebar/>
-        <div className="flex ">
-            <Topbar/>
+       <Topbar/>
+       
+        <div className="flex">
+          <Sidebar/>
+        
+            
             <Outlet/>
         </div>
+        
 
 
     </div>
