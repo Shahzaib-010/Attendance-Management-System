@@ -5,11 +5,11 @@ import { Outlet } from 'react-router'
 
 function DashboardLayout() {
   return (
-    <div className="">
+    <div className="flex flex-col">
        <Topbar/>
        
-        <div className="flex">
-          <Sidebar/>
+        <div className="flex flex-1">
+          <Sidebar className=""/>
         
             
             <Outlet/>

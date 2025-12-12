@@ -3,7 +3,7 @@ import React from 'react'
 function Topbar() {
   return (
     <section className="
-       w-full h-[6rem] absolute inset-0 z-10 flex flex-col justify-center
+       w-full h-[6rem] flex flex-col justify-center
       bg-[#0a0a0a]
        [background-image:radial-gradient(circle_at_25%_25%,#222_0.5px,transparent_1px),radial-gradient(circle_at_75%_75%,#111_0.5px,transparent_1px)]
        [background-size:10px_10px]

@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 function Sidebar() {
   return (
     <section
-      className="w-[17rem] absolute inset-0 z-0 h-screen
+      className="w-[17rem] 
       bg-[#0a0a0a]
        [background-image:radial-gradient(circle_at_25%_25%,#222_0.5px,transparent_1px),radial-gradient(circle_at_75%_75%,#111_0.5px,transparent_1px)]
        [background-size:10px_10px]
        [image-rendering:pixelated]"
     >
-      <div className=" w-full h-screen border-2 border-amber-50 p-4">
+      <div className=" w-full border-2 border-amber-50 p-4">
         {/*  */}
         
         {/*  */}
