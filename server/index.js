@@ -1,22 +1,21 @@
+// server/index.js
 import express from "express";
-import dotenv from "dotenv";
-import connectDB from "./config/db.js";
-
-dotenv.config();
+import cors from "cors";
+import connectToDatabase from "./config/db.js";
+import "dotenv/config";
+import router from "./src/routes/auth.js"
 
 const app = express();
 
-// Middlewares
+app.use(cors());
 app.use(express.json());
+app.use('/api/auth', router)
 
-// Connect to DB
-connectDB();
-
-app.get("/", (req, res) => {
-res.send("API is running...");
-});
+connectToDatabase(); // ✅ CONNECT DB FIRST
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () =>
-console.log(`🚀 Server running on port ${PORT}`)
-);
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
+

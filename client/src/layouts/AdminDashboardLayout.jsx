@@ -8,11 +8,11 @@ function DashboardLayout() {
     <div className="flex flex-col">
        <Topbar/>
        
-        <div className="flex flex-1">
-          <Sidebar className=""/>
+        <div className="flex  w-full">
+          <Sidebar className=" bg-gray-800 text-white flex-shrink-0"/>
         
             
-            <Outlet/>
+            <Outlet className="flex-1  p-6 overflow-y-auto"/>
         </div>
         
 

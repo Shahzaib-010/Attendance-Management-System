@@ -25,13 +25,13 @@ function Sidebar() {
             <h1 className="text-white font-switzer text-[16px]">Dashboard</h1>
           </Link>
           <Link
-            to="register-user"
+            to="/signup"
             className="flex justify-start items-center space-x-3   rounded-xl px-4 py-4 hover:bg-gray-800"
           >
             <div className="">
               <img src="./images/dashboardicon.png" alt="" className="w-5" />
             </div>
-            <h1 className="text-white font-switzer text-[16px]">Register User</h1>
+            <h1 className="text-white font-switzer text-[16px]">Perfonal Info</h1>
           </Link>
           <Link
             to="/signup"
@@ -40,7 +40,7 @@ function Sidebar() {
             <div className="">
               <img src="./images/homeicon.png" alt="" className="w-5" />
             </div>
-            <h1 className="text-white font-switzer text-[16px]">Home</h1>
+            <h1 className="text-white font-switzer text-[16px]">Leaves</h1>
           </Link>
           
           <Link

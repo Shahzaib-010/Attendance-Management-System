@@ -1,3 +1,4 @@
+import Login from "components/Forms/Login";
 import Signup from "components/Forms/Signup";
 import React from "react";
 
@@ -26,7 +27,7 @@ function SignupPage() {
               Get <span className="text-orange-500">Started</span>
             </h1>
             <p className="font-switzer text-gray-400">
-              Complete these steps to register your account
+              Enter your credintials to Login into Dashboard
             </p>
           </div>
           {/* ----------------------------heading------------------------------ */}
@@ -43,7 +44,7 @@ function SignupPage() {
               >
                 <p className="text-[15px]">1</p>
               </div>
-              <h3>Sign Up Your Account</h3>
+              <h3>Complete Attendance Data</h3>
             </div>
             <div
               className="w-[12vw] h-[12vw] rounded-3xl bg-transparent backdrop-blur-2xl bg-white/4 
@@ -55,7 +56,7 @@ function SignupPage() {
               >
                 <p className="text-[15px]">2</p>
               </div>
-              <h3>Set up your work space</h3>
+              <h3>Request Your Leaves</h3>
             </div>
             <div
               className="w-[12vw] h-[12vw] rounded-3xl bg-transparent backdrop-blur-2xl bg-white/4 
@@ -67,7 +68,7 @@ function SignupPage() {
               >
                 <p className="text-[15px]">3</p>
               </div>
-              <h3>Set up your profile </h3>
+              <h3>Get Detailed Insight </h3>
             </div>
           </div>
 
@@ -79,7 +80,7 @@ function SignupPage() {
       {/* ----------------------------Right side---------------------------- */}
 
       <div className="w-[50%] p-2 flex flex-col justify-center">
-        <Signup />
+        <Login />
       </div>
 
       

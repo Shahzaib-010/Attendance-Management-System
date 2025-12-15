@@ -51,12 +51,12 @@ function Signup() {
     
     <div className="w-full flex flex-col items-center">
       
-      <div className="flex  items-center ">
+      {/* <div className="flex  items-center ">
         <h1 className="font-wix2 md:text-[2.9vw] text-[5vw] text-white">
           Create an Account
         </h1>
       </div>
-      
+       */}
 
 
 
@@ -75,7 +75,7 @@ function Signup() {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              placeholder="eg. John"
+              placeholder="eg: John"
               className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none text-white"
             />
             {errors.firstName && (
@@ -90,7 +90,7 @@ function Signup() {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              placeholder="eg. Francisco"
+              placeholder="eg: Alex"
               className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
             />
             {errors.lastName && (
@@ -98,6 +98,7 @@ function Signup() {
             )}
           </div>
         </div>
+        
 
         {/* EMAIL */}
         <div>
@@ -107,7 +108,7 @@ function Signup() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="eg. johnfranc@mail.com"
+            placeholder="abc@gmail.com"
             className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
           />
           {errors.email && (
@@ -151,13 +152,7 @@ function Signup() {
         </button>
       </form>
 
-      {/* LOGIN LINK */}
-      <p className="text-center text-gray-400 text-sm mt-6">
-        Already have an account?{" "}
-        <span className="text-white hover:underline cursor-pointer">
-          Log in
-        </span>
-      </p>
+      
 
 
 
