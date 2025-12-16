@@ -14,10 +14,9 @@ import UserDashboardLayout from "../layouts/UserDashboardLayout";
 import AdminHome from "../pages/AdminPages/Home";
 import RegisterUser from "../pages/AdminPages/RegisterUser";
 
+
 // User pages
 import UserHome from "../pages/UserPages/UserHome";
-
-// 🔐 Protected Route
 import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
@@ -63,6 +62,7 @@ const router = createBrowserRouter([
             path: "register-user",
             element: <RegisterUser />,
           },
+          
         ],
       },
 

@@ -1,22 +1,24 @@
 
-import { useAuth } from "@/context/AuthProvider";
+
+import { fetchEmployees } from "features/employees/employeesSlice";
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+
 
 
 
 function Home() {
 
  
-
- const { user } = useAuth();
+const { user } = useSelector((state) => state.auth);
+ 
 
 
 
   return (
-    <div className="bg-black w-full h-[88vh] p-4">
+    <div className="bg-black w-full  p-4">
       <div className=" flex flex-col space-y-6">
-        <h1 className="text-[2.5vw] font-wix2 text-white">Welcome {user?.name}
-</h1>
+        <h1 className="text-[2.5vw] font-wix2 text-white">Welcome <span className="text-orange-500">{user?.name}</span></h1>
         
         {/* CARDS */}
         <div className=" flex items-center flex-wrap  gap-6">
@@ -29,7 +31,7 @@ function Home() {
               className="w-6 h-6 backdrop-blur-4xl bg-white/4 
                     border border-white/10 rounded-full flex justify-center items-center     "
             >
-              <p className="text-[15px]">1</p>
+              <p className="text-[15px]"></p>
             </div>
           </div>
           <div

@@ -4,12 +4,14 @@ import cors from "cors";
 import connectToDatabase from "./config/db.js";
 import "dotenv/config";
 import router from "./src/routes/auth.js"
+import userRoutes from "./src/routes/userRoutes.js"
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', router)
+app.use("/api/users", userRoutes);
 
 connectToDatabase(); // ✅ CONNECT DB FIRST
 

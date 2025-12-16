@@ -1,9 +1,11 @@
 
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
-import AuthProvider from "./context/AuthProvider";
+import { store } from './app/store'
+import { Provider } from 'react-redux'
+import AppWrapper from "./AppWrapper";
+
 
 // Import the router configuration from the file we just defined
 import router from './router/router'; 
@@ -12,9 +14,11 @@ import router from './router/router';
 // import { AttendanceProvider } from './context/AttendanceContext'; 
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <AuthProvider>
+  
+    <Provider store={store}>
+    <AppWrapper>
       <RouterProvider router={router} />
-    </AuthProvider>
-  </StrictMode>
+    </AppWrapper>
+    </Provider>
+  
 );

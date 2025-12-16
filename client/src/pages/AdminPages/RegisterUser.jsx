@@ -3,9 +3,9 @@ import React from 'react'
 
 function RegisterUser() {
   return (
-    <section className="bg-black w-full h-[88vh] p-5 pt-[4vw]">
+    <section className="bg-black w-full   p-5 pt-[4vw]">
          
-      <div className='flex flex-col items-center justify-center'>
+      <div className='flex flex-col items-center justify-center '>
         <h1 className="text-[3vw] font-wix2 text-white">Register User</h1>
         <Signup/>
 

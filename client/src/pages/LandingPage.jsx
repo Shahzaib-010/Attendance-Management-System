@@ -20,11 +20,11 @@ function landingPage() {
             <h1 className="text-white font-wix2 text-2xl">Presence<span className="text-orange-500">Pro</span></h1>
           </div>
 
-          <div className="flex items-center space-x-[3vw] font-switzer text-white">
+          {/* <div className="flex items-center space-x-[3vw] font-switzer text-white">
             <a href="/">Pricing</a>
             <a href="/">Blogs</a>
             <a href="/">Contact Us</a>
-          </div>
+          </div> */}
 
           <div className="flex justify-center item-center font-switzer text-white">
            <Link to="/signup" className="flex">
@@ -66,12 +66,12 @@ function landingPage() {
 
           {/* Primary CTAs */}
           <div className="flex justify-center space-x-6 mt-12">
-            <button className="bg-transparent bg-transparent backdrop-blur-4xl bg-white/4 
+            <button className="  backdrop-blur-4xl bg-white/4 
                     border border-white/10 hover:bg-orange-500 text-white font-bold py-3 px-6 rounded-lg shadow-xl transition duration-300 transform hover:scale-[1.03] text-md uppercase focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
               Start Free Today
             </button>
 
-            <button className="bg-transparent backdrop-blur-4xl bg-white/4 
+            <button className=" backdrop-blur-4xl bg-white/4 
                     border border-white/10 text-white hover:bg-gray-800 font-bold py-3 px-6 rounded-lg shadow-xl transition duration-300 transform hover:scale-[1.03] text-lg uppercase focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
               Live Demo
             </button>
