@@ -1,6 +1,11 @@
 import React from 'react'
+import { useSelector } from "react-redux";
 
 function Topbar() {
+
+  const { user } = useSelector((state) => state.auth);
+
+
   return (
     <section className="
        w-full h-[8rem] flex flex-col justify-center border border-b-zinc-800
@@ -25,8 +30,8 @@ function Topbar() {
                 className="size-13 rounded shrink-0 bg-violet-500 shadow hover:bg-yellow-300" 
                 />
                 <div className="flex flex-col justify-start item-center">
-                    <h1 className="font-wix2 text-white text-[20px]">Shahzaib Anwar</h1>
-                    <p className="font-switzer text-orange-400 text-[14px]">Admin</p>
+                    <h1 className="font-wix2 text-white text-[20px]">{user?.name}</h1>
+                    <p className="font-switzer text-orange-400 text-[14px]">{user?.role}</p>
                 </div>
             </div>
         </div>

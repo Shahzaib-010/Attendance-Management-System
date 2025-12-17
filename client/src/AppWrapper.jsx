@@ -5,8 +5,9 @@ import { verifyUser } from "./features/auth/authSlice";
 const AppWrapper = ({ children }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(verifyUser());
+  
+   useEffect(() => {
+    dispatch(verifyUser()); 
   }, [dispatch]);
 
   return children;

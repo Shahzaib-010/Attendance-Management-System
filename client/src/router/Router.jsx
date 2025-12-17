@@ -13,6 +13,7 @@ import UserDashboardLayout from "../layouts/UserDashboardLayout";
 // Admin pages
 import AdminHome from "../pages/AdminPages/Home";
 import RegisterUser from "../pages/AdminPages/RegisterUser";
+import UserCards from "../pages/AdminPages/UserCards";
 
 
 // User pages
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
           {
             path: "register-user",
             element: <RegisterUser />,
+          },
+          {
+            path: "user-cards",
+            element: <UserCards />,
           },
           
         ],

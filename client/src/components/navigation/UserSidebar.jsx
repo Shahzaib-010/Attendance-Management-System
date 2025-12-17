@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
+import { FaUser } from "react-icons/fa";
+import { IoSettingsSharp } from "react-icons/io5";
+import { BsCreditCard2FrontFill } from "react-icons/bs";
+import { IoDocument } from "react-icons/io5";
 
-function Sidebar() {
+function UserSidebar() {
+
+  const cardClasses = "flex justify-start items-center space-x-3   rounded-xl px-4 py-4 hover:backdrop-blur-4xl hover:bg-transparent hover:bg-white/4  hover:border hover:border-white/10"
   return (
     <section
       className="w-[18rem] 
@@ -17,49 +24,51 @@ function Sidebar() {
         <div className=" mt-[5vw] space-y-4 ">
           <Link
             to="/signup"
-            className="flex justify-start items-center space-x-3   rounded-xl px-4 py-4 hover:bg-gray-800"
-          >
-            <div className="">
-              <img src="./images/dashboardicon.png" alt="" className="w-5" />
+            className={cardClasses}
+          >    
+                    
+            <div className="text-blue-700 text-2xl">
+              <TbLayoutDashboardFilled />
             </div>
             <h1 className="text-white font-switzer text-[16px]">Dashboard</h1>
           </Link>
           <Link
-            to="/signup"
-            className="flex justify-start items-center space-x-3   rounded-xl px-4 py-4 hover:bg-gray-800"
+            to="register-user"
+            className={cardClasses}
           >
-            <div className="">
-              <img src="./images/dashboardicon.png" alt="" className="w-5" />
+            <div className="text-green-500 text-xl">
+              <FaUser />
             </div>
-            <h1 className="text-white font-switzer text-[16px]">Perfonal Info</h1>
+            <h1 className="text-white font-switzer text-[16px]">Register User</h1> 
+
           </Link>
           <Link
-            to="/signup"
-            className="flex justify-start items-center space-x-3   rounded-xl px-4 py-4 hover:bg-gray-800"
+            to="/user-list"
+            className={cardClasses}
           >
-            <div className="">
-              <img src="./images/homeicon.png" alt="" className="w-5" />
+            <div className="text-yellow-500 text-xl">
+             <BsCreditCard2FrontFill />
             </div>
-            <h1 className="text-white font-switzer text-[16px]">Leaves</h1>
+            <h1 className="text-white font-switzer text-[16px]">Salaries</h1>
           </Link>
           
           <Link
             to="/signup"
-            className="flex justify-start items-center space-x-3  rounded-xl px-4 py-4 hover:bg-gray-800"
+            className={cardClasses}
           >
-            <div className="">
-              <img src="./images/dashboardicon.png" alt="" className="w-5" />
+            <div className="text-purple-500 text-2xl">
+              <IoDocument />
             </div>
-            <h1 className="text-white font-switzer text-[16px]">Dashboard</h1>
+            <h1 className="text-white font-switzer text-[16px]">Leaves</h1>
           </Link>
           <Link
             to="/signup"
-            className="flex justify-start items-center space-x-3   rounded-xl px-4 py-4 hover:bg-gray-800"
+            className={cardClasses}
           >
-            <div className="">
-              <img src="./images/dashboardicon.png" alt="" className="w-5" />
+            <div className="text-gray-200 text-2xl">
+              <IoSettingsSharp />
             </div>
-            <h1 className="text-white font-switzer text-[16px]">Dashboard</h1>
+            <h1 className="text-white font-switzer text-[16px]">Settings</h1>
           </Link>
         </div>
         <div className=""></div>
@@ -68,7 +77,7 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default UserSidebar;
 
 
 

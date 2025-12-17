@@ -12,13 +12,10 @@ function DashboardLayout() {
           <Sidebar className=" bg-gray-800 text-white flex-shrink-0"/>
         
             
-            <div className="flex-grow overflow-y-auto">
+            <div className="flex-grow overflow-y-auto ">
               <Outlet/>
             </div>
         </div>
-        
-
-
     </div>
   )
 }

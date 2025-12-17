@@ -1,62 +1,70 @@
-// src/features/auth/authSlice.js
+
+
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async thunk for login
+// ✅ 1. Initialize state from localStorage
+const userFromStorage = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : null;
+
+const tokenFromStorage = localStorage.getItem("token") || null;
+
+const initialState = {
+  user: userFromStorage,       // persisted user
+  token: tokenFromStorage,     // persisted token
+  loading: false,
+  error: null,
+};
+
+// ✅ 2. Login async thunk
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { email, password }
-      );
-      return response.data; // { success, user, token }
+      const res = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+      return res.data;
     } catch (error) {
-      // Extract error message
-      const message =
-        error.response?.data?.error || "Login failed due to server error";
-      return rejectWithValue(message);
+      return rejectWithValue(error.response?.data?.error || "Login failed");
     }
   }
 );
 
-// Async thunk to verify user (optional, for persistent login)
+// ✅ 3. Verify user async thunk
 export const verifyUser = createAsyncThunk(
   "auth/verifyUser",
   async (_, { rejectWithValue }) => {
-    const token = localStorage.getItem("token");
-    if (!token) return rejectWithValue("No token found");
-
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/verify", {
+      const token = localStorage.getItem("token");
+      if (!token) return rejectWithValue("No token found");
+
+      const res = await axios.get("http://localhost:5000/api/auth/verify", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return response.data.user; // { _id, name, role }
-    } catch (error) {
-      return rejectWithValue("Token invalid or expired");
+      return res.data.user;
+    } catch (err) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      return rejectWithValue(err.response?.data || "Verification failed");
     }
   }
 );
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    user: null,
-    token: localStorage.getItem("token") || null,
-    loading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
     logout: (state) => {
       state.user = null;
       state.token = null;
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
     },
   },
   extraReducers: (builder) => {
+    // LOGIN
     builder
-      // LOGIN
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -65,28 +73,28 @@ const authSlice = createSlice({
         state.loading = false;
         state.user = action.payload.user;
         state.token = action.payload.token;
+        // ✅ Persist to localStorage
         localStorage.setItem("token", action.payload.token);
+        localStorage.setItem("user", JSON.stringify(action.payload.user));
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
-      })
+        state.error = action.payload || "Login failed";
+      });
 
-      // VERIFY USER
+    // VERIFY
+    builder
       .addCase(verifyUser.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(verifyUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
       })
-      .addCase(verifyUser.rejected, (state, action) => {
+      .addCase(verifyUser.rejected, (state) => {
         state.loading = false;
         state.user = null;
         state.token = null;
-        localStorage.removeItem("token");
-        state.error = action.payload;
       });
   },
 });

@@ -211,10 +211,11 @@ function AddEmployee() {
               className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] text-sm outline-none"
             >
               <option value="">Select Department</option>
-              <option value="engineering">Engineering</option>
-              <option value="hr">HR</option>
-              <option value="finance">Finance</option>
-              <option value="marketing">Marketing</option>
+              <option value="Engineering">Engineering</option>
+              <option value="HR">HR</option>
+              <option value="Finance">Finance</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Tech">Tech</option>
             </select>
             {errors.department && (
               <p className="text-red-400 text-xs mt-1">
@@ -242,14 +243,24 @@ function AddEmployee() {
         {/* ROLE */}
         <div>
           <label className="text-sm">Role</label>
-          <input
+          {/* <input
             type="text"
             name="role"
             value={formData.role}
             onChange={handleChange}
-            placeholder="eg: Frontend Developer"
+            placeholder="eg: "
             className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
-          />
+          /> */}
+          <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] text-sm outline-none"
+            >
+              <option value="">Select Role</option>
+              <option value="Admin">Admin</option>
+              <option value="User">User</option>
+            </select>
           {errors.role && (
             <p className="text-red-400 text-xs mt-1">{errors.role}</p>
           )}
