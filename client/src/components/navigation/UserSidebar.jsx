@@ -43,7 +43,7 @@ function UserSidebar() {
 
           </Link>
           <Link
-            to="/user-list"
+            to="/leave-dashboard"
             className={cardClasses}
           >
             <div className="text-yellow-500 text-xl">

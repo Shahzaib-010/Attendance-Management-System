@@ -14,11 +14,15 @@ import UserDashboardLayout from "../layouts/UserDashboardLayout";
 import AdminHome from "../pages/AdminPages/Home";
 import RegisterUser from "../pages/AdminPages/RegisterUser";
 import UserCards from "../pages/AdminPages/UserCards";
+import Leaves from "pages/AdminPages/Leaves";
 
 
 // User pages
 import UserHome from "../pages/UserPages/UserHome";
 import ProtectedRoute from "./ProtectedRoute";
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -43,6 +47,7 @@ const router = createBrowserRouter([
             index: true,
             element: <UserHome />,
           },
+           
         ],
       },
 
@@ -64,9 +69,14 @@ const router = createBrowserRouter([
             element: <RegisterUser />,
           },
           {
+            path: "leaves",
+            element: <Leaves />,
+          },
+          {
             path: "user-cards",
             element: <UserCards />,
           },
+          
           
         ],
       },

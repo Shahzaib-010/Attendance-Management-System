@@ -53,7 +53,7 @@ function Sidebar() {
 
           </Link>
           <Link
-            to="/user-list"
+            to="leave-dashboard"
             className={cardClasses}
           >
             <div className="text-yellow-500 text-xl">
@@ -63,7 +63,7 @@ function Sidebar() {
           </Link>
           
           <Link
-            to="/signup"
+            to="leaves"
             className={cardClasses}
           >
             <div className="text-purple-500 text-2xl">

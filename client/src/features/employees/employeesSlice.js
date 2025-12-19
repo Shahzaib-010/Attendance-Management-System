@@ -71,4 +71,33 @@ const employeesSlice = createSlice({
   },
 });
 
+
+
+
+// Selector for Salary Analytics
+export const selectSalaryStats = (state) => {
+  const employees = state.employees.list;
+
+  // Calculate Total Salary
+  const totalSalary = employees.reduce((acc, emp) => acc + Number(emp.salary || 0), 0);
+
+  // Calculate Salary per Department
+  const salaryByDept = employees.reduce((acc, emp) => {
+    const dept = emp.department || "Unassigned";
+    const salary = Number(emp.salary || 0);
+    
+    if (!acc[dept]) {
+      acc[dept] = 0;
+    }
+    acc[dept] += salary;
+    
+    return acc;
+  }, {});
+
+  return {
+    totalSalary,
+    salaryByDept, // This will look like: { IT: 50000, HR: 45000 }
+  };
+};
+
 export default employeesSlice.reducer;
