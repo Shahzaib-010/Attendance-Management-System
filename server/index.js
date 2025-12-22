@@ -17,6 +17,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/leaves", leaveRoutes);
 
 
+
 connectToDatabase(); // ✅ CONNECT DB FIRST
 
 const PORT = process.env.PORT || 5000;

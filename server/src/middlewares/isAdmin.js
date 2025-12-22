@@ -1,10 +1,13 @@
 const isAdmin = (req, res, next) => {
-  if (req.user.role !== "admin") {
+  console.log("👮 IS ADMIN CHECK:", req.user);
+
+  if (!req.user || req.user.role !== "admin") {
     return res.status(403).json({
       success: false,
-      error: "Admin access only",
+      error: "Access denied. Admin only.",
     });
   }
+
   next();
 };
 

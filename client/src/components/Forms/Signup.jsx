@@ -14,10 +14,10 @@ function AddEmployee() {
     password: "",
     employeeId: "",
     dob: "",
-    gender: "",
+    jobRole: "",          
     department: "",
     salary: "",
-    role: "",
+    designation: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -51,10 +51,11 @@ function AddEmployee() {
       newErrors.employeeId = "Employee ID is required";
 
     if (!formData.dob) newErrors.dob = "Date of Birth is required";
-    if (!formData.gender) newErrors.gender = "Gender is required";
+    if (!formData.jobRole.trim()) newErrors.jobRole = "Job Role is required";
     if (!formData.department) newErrors.department = "Department is required";
     if (!formData.salary) newErrors.salary = "Salary is required";
-    if (!formData.role.trim()) newErrors.role = "Role is required";
+    if (!formData.designation)
+      newErrors.designation = "Designation is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -63,25 +64,26 @@ function AddEmployee() {
   // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
-    // Dispatch Redux thunk to add employee
-    const resultAction = await dispatch(addEmployee(formData));
+    const payload = {
+      ...formData,
+      salary: Number(formData.salary), // ✅ ensure number
+    };
 
-    // Check if success
+    const resultAction = await dispatch(addEmployee(payload));
+
     if (addEmployee.fulfilled.match(resultAction)) {
-      // Reset form
       setFormData({
         name: "",
         email: "",
         password: "",
         employeeId: "",
         dob: "",
-        gender: "",
+        jobRole: "",
         department: "",
         salary: "",
-        role: "",
+        designation: "",
       });
     }
   };
@@ -90,7 +92,7 @@ function AddEmployee() {
     <div className="w-full flex flex-col items-center">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-2xl mt-10 space-y-5 font-switzer text-white"
+        className="w-full mt-10 space-y-5 font-switzer text-white"  // ✅ FULL WIDTH
       >
         {/* NAME + EMPLOYEE ID */}
         <div className="grid grid-cols-2 gap-4">
@@ -101,32 +103,12 @@ function AddEmployee() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="eg: John Alex"
+              placeholder="eg: John "
               className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
             />
-            {errors.name && (
-              <p className="text-red-400 text-xs mt-1">{errors.name}</p>
-            )}
+            {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
           </div>
-
-          <div>
-            <label className="text-sm">Employee ID</label>
-            <input
-              type="text"
-              name="employeeId"
-              value={formData.employeeId}
-              onChange={handleChange}
-              placeholder="EMP-001"
-              className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
-            />
-            {errors.employeeId && (
-              <p className="text-red-400 text-xs mt-1">{errors.employeeId}</p>
-            )}
-          </div>
-        </div>
-
-        {/* EMAIL */}
-        <div>
+           <div>
           <label className="text-sm">Email</label>
           <input
             type="email"
@@ -136,10 +118,26 @@ function AddEmployee() {
             placeholder="abc@gmail.com"
             className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
           />
-          {errors.email && (
-            <p className="text-red-400 text-xs mt-1">{errors.email}</p>
-          )}
+          {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
         </div>
+
+          
+        </div>
+
+        {/* EMAIL */}
+        <div>
+            <label className="text-sm">Employee ID</label>
+            <input
+              type="text"
+              name="employeeId"
+              value={formData.employeeId}
+              onChange={handleChange}
+              placeholder="EMP-001"
+              className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
+            />
+            {errors.employeeId && <p className="text-red-400 text-xs mt-1">{errors.employeeId}</p>}
+          </div>
+       
 
         {/* PASSWORD */}
         <div>
@@ -160,12 +158,10 @@ function AddEmployee() {
               {showPassword ? "🙈" : "👁️"}
             </span>
           </div>
-          {errors.password && (
-            <p className="text-red-400 text-xs mt-1">{errors.password}</p>
-          )}
+          {errors.password && <p className="text-red-400 text-xs mt-1">{errors.password}</p>}
         </div>
 
-        {/* DOB + GENDER */}
+        {/* DOB + JOB ROLE */}
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="text-sm">Date of Birth</label>
@@ -176,27 +172,20 @@ function AddEmployee() {
               onChange={handleChange}
               className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] text-sm outline-none"
             />
-            {errors.dob && (
-              <p className="text-red-400 text-xs mt-1">{errors.dob}</p>
-            )}
+            {errors.dob && <p className="text-red-400 text-xs mt-1">{errors.dob}</p>}
           </div>
 
           <div>
-            <label className="text-sm">Gender</label>
-            <select
-              name="gender"
-              value={formData.gender}
+            <label className="text-sm">Job Role</label>
+            <input
+              type="text"
+              name="jobRole"
+              value={formData.jobRole}
               onChange={handleChange}
-              className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] text-sm outline-none"
-            >
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-            {errors.gender && (
-              <p className="text-red-400 text-xs mt-1">{errors.gender}</p>
-            )}
+              placeholder="Software Engineer"
+              className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
+            />
+            {errors.jobRole && <p className="text-red-400 text-xs mt-1">{errors.jobRole}</p>}
           </div>
         </div>
 
@@ -217,11 +206,7 @@ function AddEmployee() {
               <option value="Marketing">Marketing</option>
               <option value="Tech">Tech</option>
             </select>
-            {errors.department && (
-              <p className="text-red-400 text-xs mt-1">
-                {errors.department}
-              </p>
-            )}
+            {errors.department && <p className="text-red-400 text-xs mt-1">{errors.department}</p>}
           </div>
 
           <div>
@@ -234,39 +219,27 @@ function AddEmployee() {
               placeholder="50000"
               className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
             />
-            {errors.salary && (
-              <p className="text-red-400 text-xs mt-1">{errors.salary}</p>
-            )}
+            {errors.salary && <p className="text-red-400 text-xs mt-1">{errors.salary}</p>}
           </div>
         </div>
 
-        {/* ROLE */}
+        {/* DESIGNATION */}
         <div>
-          <label className="text-sm">Role</label>
-          {/* <input
-            type="text"
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            placeholder="eg: "
-            className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] placeholder-gray-400 text-sm outline-none"
-          /> */}
+          <label className="text-sm">Designation</label>
           <select
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] text-sm outline-none"
-            >
-              <option value="">Select Role</option>
-              <option value="Admin">Admin</option>
-              <option value="User">User</option>
-            </select>
-          {errors.role && (
-            <p className="text-red-400 text-xs mt-1">{errors.role}</p>
-          )}
+            name="designation"
+            value={formData.designation}
+            onChange={handleChange}
+            className="w-full mt-1 p-3 rounded-lg bg-[#1a1a1a] text-sm outline-none"
+          >
+            <option value="">Select Designation</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+          {errors.designation && <p className="text-red-400 text-xs mt-1">{errors.designation}</p>}
         </div>
 
-        {/* SUBMIT BUTTON */}
+        {/* SUBMIT */}
         <button
           type="submit"
           disabled={loading}
@@ -275,7 +248,6 @@ function AddEmployee() {
           {loading ? "Adding..." : "Add Employee"}
         </button>
 
-        {/* Global error */}
         {error && <p className="text-red-500 mt-2">{error}</p>}
       </form>
     </div>
@@ -283,3 +255,4 @@ function AddEmployee() {
 }
 
 export default AddEmployee;
+

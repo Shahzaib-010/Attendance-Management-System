@@ -1,70 +1,76 @@
-
-
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// ✅ 1. Initialize state from localStorage
-const userFromStorage = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user"))
-  : null;
-
-const tokenFromStorage = localStorage.getItem("token") || null;
-
-const initialState = {
-  user: userFromStorage,       // persisted user
-  token: tokenFromStorage,     // persisted token
-  loading: false,
-  error: null,
-};
-
-// ✅ 2. Login async thunk
+// 🔐 LOGIN
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        { email, password }
+      );
+
+      console.log("🟢 LOGIN RESPONSE:", res.data);
+
       return res.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data?.error || "Login failed");
+      return rejectWithValue(
+        error.response?.data?.error || "Login failed"
+      );
     }
   }
 );
 
-// ✅ 3. Verify user async thunk
+// 🔁 VERIFY ON REFRESH (REPLACES AuthProvider useEffect)
 export const verifyUser = createAsyncThunk(
   "auth/verifyUser",
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("token");
-      if (!token) return rejectWithValue("No token found");
+      if (!token) throw new Error("No token found");
 
-      const res = await axios.get("http://localhost:5000/api/auth/verify", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        "http://localhost:5000/api/auth/verify",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      console.log("🟢 VERIFY RESPONSE:", res.data.user);
+
       return res.data.user;
-    } catch (err) {
+    } catch (error) {
+      console.log("🔴 VERIFY FAILED:", error.message);
       localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      return rejectWithValue(err.response?.data || "Verification failed");
+      return rejectWithValue("Session expired");
     }
   }
 );
+
+const initialState = {
+  user: null,              // ❗ NEVER trust localStorage user
+  token: localStorage.getItem("token") || null,
+  loading: true,           // ❗ IMPORTANT
+  error: null,
+};
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
     logout: (state) => {
+      console.log("🔴 LOGOUT");
       state.user = null;
       state.token = null;
+      state.loading = false;
       localStorage.removeItem("token");
-      localStorage.removeItem("user");
     },
   },
   extraReducers: (builder) => {
-    // LOGIN
     builder
+
+      // LOGIN
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -73,23 +79,25 @@ const authSlice = createSlice({
         state.loading = false;
         state.user = action.payload.user;
         state.token = action.payload.token;
-        // ✅ Persist to localStorage
+
         localStorage.setItem("token", action.payload.token);
-        localStorage.setItem("user", JSON.stringify(action.payload.user));
+
+        console.log("✅ USER STORED IN REDUX:", state.user);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload || "Login failed";
-      });
+        state.error = action.payload;
+      })
 
-    // VERIFY
-    builder
+      // VERIFY
       .addCase(verifyUser.pending, (state) => {
         state.loading = true;
       })
       .addCase(verifyUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+
+        console.log("✅ VERIFIED USER SET:", action.payload);
       })
       .addCase(verifyUser.rejected, (state) => {
         state.loading = false;

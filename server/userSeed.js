@@ -7,15 +7,18 @@ const userRegister = async () => {
   await connectToDatabase();
 
   try {
-    const hashPassword = await bcrypt.hash("admin1234", 10);
+    const hashPassword = await bcrypt.hash("shahzaib", 10);
 
     const newUser = new User({
-      name: "Admin",
-      email: "admin@gmail.com",
+      name: "Shahzaib",
+      employeeId: "Emp-001",
+      email: "shahzaib@gmail.com",
       password: hashPassword,
-      role: "admin",
-      employeeId: "EMP-ADMIN-001",
+      designation: "admin",
+      jobRole:"HR-Manager",
       department: "HR",
+      salary:"190000",
+      dob:"04-04-2002",
     });
 
     await newUser.save();

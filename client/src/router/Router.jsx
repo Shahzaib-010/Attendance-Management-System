@@ -35,51 +35,37 @@ const router = createBrowserRouter([
       { path: "signup", element: <SignupPage /> },
 
       // ---------------- USER DASHBOARD ----------------
-      {
-        path: "dashboard",
-        element: (
-          <ProtectedRoute>
-            <UserDashboardLayout />
-          </ProtectedRoute>
-        ),
-        children: [
-          {
-            index: true,
-            element: <UserHome />,
-          },
-           
-        ],
-      },
+      // USER
+{
+  path: "dashboard",
+  element: (
+    <ProtectedRoute role="user">
+      <UserDashboardLayout />
+    </ProtectedRoute>
+  ),
+  children: [
+    { index: true, element: <UserHome /> },
+  ],
+},
+
+
 
       // ---------------- ADMIN DASHBOARD ----------------
-      {
-        path: "admin",
-        element: (
-          <ProtectedRoute role="admin">
-            <AdminDashboardLayout />
-          </ProtectedRoute>
-        ),
-        children: [
-          {
-            index: true,
-            element: <AdminHome />,
-          },
-          {
-            path: "register-user",
-            element: <RegisterUser />,
-          },
-          {
-            path: "leaves",
-            element: <Leaves />,
-          },
-          {
-            path: "user-cards",
-            element: <UserCards />,
-          },
-          
-          
-        ],
-      },
+     // ADMIN
+{
+  path: "admin",
+  element: (
+    <ProtectedRoute role="admin">
+      <AdminDashboardLayout />
+    </ProtectedRoute>
+  ),
+  children: [
+    { index: true, element: <AdminHome /> },
+    { path: "register-user", element: <RegisterUser /> },
+    { path: "leaves", element: <Leaves /> },
+    { path: "user-cards", element: <UserCards /> },
+  ],
+},
 
       // ---------------- 404 ----------------
       { path: "*", element: <NotFound /> },

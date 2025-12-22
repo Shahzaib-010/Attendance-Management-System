@@ -60,21 +60,36 @@ const data = [
 ];
 
 
+
+
 function Home() {
   
-  const user = useSelector((state) => state.auth.user);
+  // const user = useSelector((state) => state.auth.user);
 
+  // const dispatch = useDispatch();
+  //  const { list: users, loading, error } = useSelector(
+  //   (state) => state.employees
+  // );
+
+  // const { totalSalary, salaryByDept } = useSelector(selectSalaryStats);
+
+
+  // useEffect(() => {
+  //   dispatch(fetchEmployees());
+  // }, [dispatch]);
+
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
-   const { list: users, loading, error } = useSelector(
-    (state) => state.employees
-  );
+  const { list: users, loading, error } = useSelector((state) => state.employees);
 
   const { totalSalary, salaryByDept } = useSelector(selectSalaryStats);
 
-
   useEffect(() => {
-    dispatch(fetchEmployees());
-  }, [dispatch]);
+    // Only admin can fetch all employees
+    if (user?.role === "admin") {
+      dispatch(fetchEmployees());
+    }
+  }, [dispatch, user?.role]);
 
   
 
