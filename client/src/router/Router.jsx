@@ -19,8 +19,7 @@ import Leaves from "pages/AdminPages/Leaves";
 // User pages
 import UserHome from "../pages/UserPages/UserHome";
 import ProtectedRoute from "./ProtectedRoute";
-import FinancePage from "pages/FinancePages/FinancePage";
-import FinanceDetailPage from "pages/FinancePages/FinanceDetailPage";
+
 
 const router = createBrowserRouter([
   {
@@ -31,8 +30,7 @@ const router = createBrowserRouter([
       // ---------------- PUBLIC ----------------
       { index: true, element: <LandingPage /> },
       { path: "signup", element: <SignupPage /> },
-      { path: "finance", element: <FinancePage /> },
-      { path: "finance/user/:id", element: <FinanceDetailPage /> },
+  
 
       // ---------------- USER DASHBOARD ----------------
       // USER

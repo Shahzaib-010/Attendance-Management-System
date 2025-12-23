@@ -12,9 +12,9 @@ import router from './router/router';
 createRoot(document.getElementById("root")).render(
   
     <Provider store={store}>
-      
+      <AppWrapper>
         <RouterProvider router={router} />
-      
+      </AppWrapper>
     </Provider>
   
 );
