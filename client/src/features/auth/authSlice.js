@@ -49,9 +49,9 @@ export const verifyUser = createAsyncThunk(
 );
 
 const initialState = {
-  user: null,              // ❗ NEVER trust localStorage user
+  user: null,              
   token: localStorage.getItem("token") || null,
-  loading: true,           // ❗ IMPORTANT
+  loading: true,           
   error: null,
 };
 
