@@ -98,9 +98,9 @@ function Home() {
 
 
   return (
-    <div className="bg-black w-full  p-5 space-y-[4vw]">
+    <div className="bg-black w-full  p-5 space-y-[4vw] ">
       <div className=" flex flex-col ">
-        <h1 className="text-[2.5vw] font-wix2 text-white leading-none ">Hello <span className="text-orange-500">{user?.name}</span></h1>
+        <h1 className="text-[2.5vw] font-clash-bold text-white leading-none ">Hello <span className="text-orange-500">{user?.name}</span></h1>
         <p className=" font-switzer text-neutral-400">Hope you're having a <span className="text-white">productive</span> day  :)</p>
         
         {/* CARDS */}

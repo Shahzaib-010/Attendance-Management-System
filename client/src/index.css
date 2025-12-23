@@ -20,6 +20,26 @@
   font-family: switzer2;
   src: url('/fonts/switzer2.ttf');
 }
+@font-face {
+  font-family: clash-display-bold;
+  src: url('/fonts/ClashDisplay-Bold.ttf');
+}
+@font-face {
+  font-family: clash-display-light;
+  src: url('/fonts/ClashDisplay-Light.ttf');
+}
+@font-face {
+  font-family: clash-display-medium;
+  src: url('/fonts/ClashDisplay-Medium.ttf');
+}
+@font-face {
+  font-family: clash-display-regular;
+  src: url('\fonts\ClashDisplay-Regular.ttf');
+}
+@font-face {
+  font-family: clash-display-semibold;
+  src: url('/fonts/ClashDisplay-Semibold.ttf');
+}
 
 
 
@@ -34,6 +54,11 @@
     --font-wix2 : wix2, "san-serif";
     --font-wix : wix, "san-serif";
     --font-switzer : switzer, "san-serif";
+    --font-clash-bold: clash-display-bold, "san-serif";
+    --font-clash-semibold: clash-display-semibold, "san-serif";
+    --font-clash-medium: clash-display-medium, "san-serif";
+    --font-clash-regular: clash-display-regular, "san-serif";
+    --font-clash-light: clash-display-light, "san-serif";
    
 
 
@@ -51,17 +76,16 @@
 
 @layer base {
   :root {
-    --color-orange: #ff6d10;       /* orange */
-    --color-text: #000000 ;        /* black */
-    --color-bg: #ffffff;           /* white */
+    --color-primary: #9b59b6;       /* purple */
+    --color-dark: #262626 ;        /* black */
+    --color-light: #ffffff;           /* white */
     
   }
 
   .dark {
-    --color-orange: #ff6d10;    /* orange  */
-    --color-text: #ffffff;      /* white */
-    --color-bg: #000000;        /* black */
-    
+     --color-primary: #9b59b6;       /* purple */
+    --color-dark: #262626 ;        /* black */
+    --color-light: #ffffff;           /* white */
   }
 
   /* Optional: smooth color transition */
