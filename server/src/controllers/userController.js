@@ -3,7 +3,7 @@
 
 
 
-import User from "../models/User.js";
+import User from "../models/users/User.js";
 import bcrypt from "bcryptjs";
 
 /**

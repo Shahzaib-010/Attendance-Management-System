@@ -4,9 +4,9 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 // MODELS (adjusted paths)
-import User from "../src/models/User.js";
+import User from "../src/models/users/User.js";
 import Employee from "../src/models/employees/employee.js";
-import EmployeeCoreProfile from "../src/models/employees/employeeProfile.js";
+import EmployeeCoreProfile from "../src/models/employees/employee-core-profile.js";
 
 dotenv.config();
 

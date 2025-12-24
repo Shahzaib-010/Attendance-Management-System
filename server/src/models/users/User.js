@@ -22,28 +22,45 @@ const userSchema = new mongoose.Schema(
     },
 
     // 🔐 Access control
+    // designation: {
+    //   type: String,
+    //   enum: ["admin", "user"],
+    //   required: true,
+    // },
+
     designation: {
       type: String,
-      enum: ["admin", "user"],
+      enum: ["super_admin", "admin", "user"],
       required: true,
+    },
+
+    adminType: {
+      type: String,
+      enum: ["hr", "finance", "dept"],
+      default: null,
     },
 
     // 💼 Job-specific role
-    jobRole: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+    // jobRole: {
+    //   type: String,
+    //   required: true,
+    //   trim: true,
+    // },
+
+    // department: {
+    //   type: String,
+    //   required: true,
+    //   trim: true,
+    // },
 
     department: {
       type: String,
-      required: true,
       trim: true,
     },
 
-    dob: { type: Date, required: true },
+    // dob: { type: Date, required: true },
 
-    salary: { type: Number, required: true },
+    // salary: { type: Number, required: true },
   },
   { timestamps: true }
 );

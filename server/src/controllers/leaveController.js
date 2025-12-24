@@ -1,4 +1,4 @@
-import Leave from "../models/Leave.js";
+import Leave from "../models/leaves/Leave.js";
 
 /**
  * ================================
