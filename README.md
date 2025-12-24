@@ -40,9 +40,7 @@ attendance-management-system/
     │   └── utils/      # API Helper functions
 
 
-
-
-🛠️ The Tech Stack
+#### 🛠️ The Tech Stack
 Frontend: React.js (Component-based architecture)
 
 Styling: Tailwind CSS (Rapid, responsive UI)
@@ -53,7 +51,7 @@ Database: MongoDB (Scalable document storage)
 
 Authentication: JWT (JSON Web Tokens) with Environment-based persistence.
 
-🚀 Getting Started
+##### 🚀 Getting Started
 1. Prerequisites
 Node.js installed
 
