@@ -38,3 +38,25 @@ attendance-management-system/
     │   ├── components/ # PascalCase UI Elements
     │   ├── pages/      # View Components (Dashboards)
     │   └── utils/      # API Helper functions
+
+
+
+
+🛠️ The Tech Stack
+Frontend: React.js (Component-based architecture)
+
+Styling: Tailwind CSS (Rapid, responsive UI)
+
+Backend: Node.js & Express.js (RESTful API)
+
+Database: MongoDB (Scalable document storage)
+
+Authentication: JWT (JSON Web Tokens) with Environment-based persistence.
+
+🚀 Getting Started
+1. Prerequisites
+Node.js installed
+
+MongoDB Atlas or Local Instance
+
+Postman (for API testing)
