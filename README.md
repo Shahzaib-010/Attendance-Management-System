@@ -13,7 +13,7 @@ Unlike a simple CRUD app, this system is built to demonstrate **true departmenta
 
 The core of this system is the **Departmental Wall**. Data visibility is dynamically filtered based on the logged-in user's role:
 
-* **👑 Super Admin Dashboard:** * Full "God-mode" access to all employees, departments, and financial data.
+* **👑 Super Admin Dashboard:** * Full access to all employees, departments, and financial data.
     * Ability to "promote" users to Department Admins (Tech, HR, Finance, etc.).
 * **📂 Department Admins (Tech, Marketing, Editor):** * Isolated access to view and manage only their respective team members.
 * **📑 HR Admin Module:** * Focused workflow for tracking daily attendance and managing leave approvals.
