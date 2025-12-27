@@ -5,7 +5,7 @@
 
 Welcome to the **Employee Management System (EMS)**. This project is a specialized MERN stack application designed to centralize company operations through a sophisticated **Role-Based Access Control (RBAC)** architecture. 
 
-Unlike a simple CRUD app, this system is built to demonstrate **true departmental scalability**, allowing a Super Admin to control the entire organization's flow while keeping sensitive data isolated within departments.
+Unlike a simple CRUD app, this system is built to demonstrate **true departmental scalability**, allowing a Super Admin to control the entire organization's flow while keeping sensitive data isolated with in departments.
 
 ---
 
